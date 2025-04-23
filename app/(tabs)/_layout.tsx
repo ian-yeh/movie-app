@@ -112,4 +112,4 @@ const _Layout = () => {
   )
 }
 
-export default _Layout
+export default _Layout;

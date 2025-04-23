@@ -13,6 +13,7 @@ import MovieCard from '@/components/MovieCard';
 import useFetch from '@/services/useFetch';
 
 import { fetchMovies } from '@/services/api';
+import { updateSearchCount } from '@/services/appwrite';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');  
@@ -28,6 +29,7 @@ const Search = () => {
   }), false);
 
   useEffect(() => {
+
     const timeoutId = setTimeout(async() => {
       if (searchQuery.trim()) {
         await loadMovies();
@@ -39,6 +41,12 @@ const Search = () => {
     return () => clearTimeout(timeoutId);
 
   }, [searchQuery])
+
+  useEffect(() => {
+    if (movies?.length > 0 && movies?.[0]) {
+      updateSearchCount(searchQuery, movies[0]);
+    }
+  }, [movies])
 
   return (
     <View className="flex-1 bg-primary">
