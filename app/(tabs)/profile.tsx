@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
+
+import { icons } from '@/constants/icons';
 
 const Profile = () => {
   return (
-    <View>
-      <Text>Profile</Text>
+    <View className="bg-primary flex-1 px-10">
+      <View className="foex justify-center items-center flex-1 flex-col gap-5">
+        <Image source={icons.person} tintColor="#fff" className="size-10" />
+        <Text className="text-light-200 text-base">Profile</Text>
+       </View>
     </View>
   )
 }
